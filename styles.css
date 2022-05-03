@@ -34,6 +34,9 @@ a {
   border-radius: 5px;
   width: 50vw;
 }
+.card-reply {
+  width: 43vw;
+}
 
 .upvoting {
   background: var(--bg);
@@ -122,6 +125,9 @@ textarea {
 }
 .hr-center {
   align-items: center;
+}
+.hr-right {
+  align-items: flex-end;
 }
 .vr-top {
   align-items: flex-start;
