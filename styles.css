@@ -5,9 +5,12 @@
   --primary: #5457b6;
   --secondary: #ed6468;
   --primary-light: #c3c4ef;
+  --secondary-light: #ffb8bb;
+
   --primary-light-filter: invert(76%) sepia(24%) saturate(338%)
     hue-rotate(201deg) brightness(103%) contrast(87%);
-  --secondary-light: #ffb8bb;
+  --secondary-light-filter: invert(71%) sepia(21%) saturate(487%)
+    hue-rotate(309deg) brightness(103%) contrast(108%);
 
   --dark-blue: #324152;
   --grayish-blue: #67727e;
@@ -104,7 +107,9 @@ a {
 .btn-reply,
 .btn-edit,
 .btn-delete,
-.btn-reply img {
+.btn-reply img,
+.btn-edit img,
+.btn-delete img {
   font-weight: 600;
   font-size: 16px;
   transition: 0.5s ease all;
@@ -120,11 +125,12 @@ a {
   color: var(--secondary-light);
 }
 
-.btn-reply:hover img {
+.btn-reply:hover img,
+.btn-edit:hover img {
   filter: var(--primary-light-filter);
 }
 .btn-delete:hover img {
-  color: var(--secondary-light);
+  color: var(--secondary-light-filter);
 }
 
 .btn-send {
@@ -210,4 +216,7 @@ textarea:focus {
 }
 .mg-lr-15px {
   margin: 0 15px;
+}
+.hidden {
+  display: none;
 }
