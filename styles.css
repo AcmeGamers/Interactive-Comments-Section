@@ -30,9 +30,14 @@ a {
 .card {
   background: var(--white);
   padding: 1rem;
-  margin: 5px;
+  margin: 0 5px 10px;
   border-radius: 5px;
   width: 50vw;
+}
+.card-reply-container {
+  margin-left: 65px;
+  border-left: 2px solid var(--light-gray);
+  margin-top: 20px;
 }
 .card-reply {
   width: 43vw;
@@ -106,6 +111,11 @@ textarea {
 
   border: 1px solid var(--light-gray);
   border-radius: 10px;
+  outline: none;
+  transition: 0.5s ease all;
+}
+textarea:focus {
+  border: 1px solid var(--grayish-blue);
 }
 
 @media (max-width: 375px) {
