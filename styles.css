@@ -36,7 +36,7 @@ a {
   border-radius: 5px;
   width: 50vw;
 }
-.card:last-child {
+.card-reply-container .card:last-child {
   margin: 0 5px;
 }
 .card-reply-container {
@@ -102,16 +102,29 @@ a {
 }
 
 .btn-reply,
+.btn-edit,
+.btn-delete,
 .btn-reply img {
   font-weight: 600;
   font-size: 16px;
   transition: 0.5s ease all;
 }
-.btn-reply:hover {
+.btn-delete {
+  color: var(--secondary);
+}
+.btn-reply:hover,
+.btn-edit:hover {
   color: var(--primary-light);
 }
+.btn-delete:hover {
+  color: var(--secondary-light);
+}
+
 .btn-reply:hover img {
   filter: var(--primary-light-filter);
+}
+.btn-delete:hover img {
+  color: var(--secondary-light);
 }
 
 .btn-send {
