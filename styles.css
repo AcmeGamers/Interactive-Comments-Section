@@ -5,6 +5,8 @@
   --primary: #5457b6;
   --seconary: #ed6468;
   --primary-light: #c3c4ef;
+  --primary-light-filter: invert(76%) sepia(24%) saturate(338%)
+    hue-rotate(201deg) brightness(103%) contrast(87%);
   --secondary-light: #ffb8bb;
 
   --dark-blue: #324152;
@@ -34,10 +36,14 @@ a {
   border-radius: 5px;
   width: 50vw;
 }
+.card:last-child {
+  margin: 0 5px;
+}
 .card-reply-container {
   margin-left: 65px;
   border-left: 2px solid var(--light-gray);
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 .card-reply {
   width: 43vw;
@@ -51,10 +57,20 @@ a {
   margin-right: 25px;
 }
 .upvoting span {
-  color: var(--dark-blue);
   margin: 10px 0;
+  color: var(--primary);
+}
+.upvoting a {
+  color: var(--primary-light);
+}
+.upvoting span,
+.upvoting a {
   font-size: 16px;
   font-weight: 500;
+  transition: 0.5s ease all;
+}
+.upvoting a:hover {
+  color: var(--primary);
 }
 
 .user {
@@ -85,9 +101,17 @@ a {
   cursor: pointer;
 }
 
-.btn-reply {
+.btn-reply,
+.btn-reply img {
   font-weight: 600;
   font-size: 16px;
+  transition: 0.5s ease all;
+}
+.btn-reply:hover {
+  color: var(--primary-light);
+}
+.btn-reply:hover img {
+  filter: var(--primary-light-filter);
 }
 
 .btn-send {
@@ -100,6 +124,11 @@ a {
   padding: 15px 25px;
   letter-spacing: 1px;
   text-transform: uppercase;
+
+  transition: 0.5s ease all;
+}
+.btn-send:hover {
+  background: var(--primary-light);
 }
 textarea {
   font-family: var(--font-family);
