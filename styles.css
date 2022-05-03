@@ -1,10 +1,44 @@
+:root {
+  --button-color: #5457b6;
+  --delete-button-color: #ed6468;
+  --light-grayish-blue: #c3c4ef;
+  --hover-delete-button: #ffb8bb;
+
+  --dark-blue: #324152;
+  --grayish-blue: #67727e;
+  --light-gray: #eaecf1;
+  --bg: #f5f6fa;
+  --white: #ffffff;
+
+  --p-font: 16px;
+  --font-family: "Rubik", sans-serif;
+  /* Weights: 400, 500, 700 */
+}
+
 body {
-  background-color: #f2f2f2;
+  background-color: var(--bg);
 }
 
 .card {
-  background: white;
+  background: var(--white);
   padding: 2rem;
+  margin: 7px;
+}
+
+.upvoting {
+  background: var(--bg);
+  padding: 10px;
+  border-radius: 15px;
+}
+
+.btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: blue;
+}
+
+@media (max-width: 375px) {
 }
 
 /* Predefined CSS */

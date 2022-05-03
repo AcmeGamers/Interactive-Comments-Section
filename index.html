@@ -18,25 +18,34 @@
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 
     <title>Frontend Mentor | Interactive comments section</title>
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Rubik:400,500,700&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <!-- <main id="root"></main> -->
     <div>
       <!-- Comment Card Container -->
       <div class="card row">
-        <div class="column">
-          <span>Upvote</span>
-          <span>`Number`</span>
-          <span>Downvote</span>
+        <div class="column upvoting">
+          <a href="">+</a>
+          <span>5</span>
+          <a href="">-</a>
         </div>
         <div>
           <div class="row space-between">
             <div class="row">
-              <div>Images</div>
-              <div>Name</div>
-              <div>Time</div>
+              <img
+                class="user"
+                src="./images/avatars/image-amyrobson.png"
+                alt=""
+              />
+              <div>Amberson</div>
+              <div>1 month ago</div>
             </div>
-            <div>Reply</div>
+            <button>Reply</button>
           </div>
           <div>
             Commnet lorem ipsum dolor sit amet consectetur adipisicing elit.
