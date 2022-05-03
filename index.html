@@ -33,44 +33,43 @@
     <script type="text/babel">
       function Card(props) {
         return (
-          <div class="card row">
-            <div class="column upvoting vr-center hr-center">
-              <a href="#">+</a>
-              <span>5</span>
-              <a href="#">-</a>
-            </div>
-            <div>
-              <div class="row space-between hr-center">
-                <div class="user-info row hr-center">
-                  <img
-                    class="user"
-                    src="./images/avatars/image-amyrobson.png"
-                    alt=""
-                  />
-                  <a class="username mg-lr-15px">amberson</a>
-                  <p class="period">1 month ago</p>
-                </div>
-                <button class="btn btn-reply">
-                  <img src="./images/icon-reply.svg" /> Reply
-                </button>
+          <div>
+            <div class="card row">
+              <div class="column upvoting vr-center hr-center">
+                <a href="#">+</a>
+                <span>5</span>
+                <a href="#">-</a>
               </div>
-              <p class="comment">
-                lorem ipsum dolor sit amet consectetur adipisicing elit sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat.
-              </p>
+              <div>
+                <div class="row space-between hr-center">
+                  <div class="user-info row hr-center">
+                    <img
+                      class="user"
+                      src="./images/avatars/image-amyrobson.png"
+                      alt=""
+                    />
+                    <a class="username mg-lr-15px">amberson</a>
+                    <p class="period">1 month ago</p>
+                  </div>
+                  <button class="btn btn-reply">
+                    <img src="./images/icon-reply.svg" /> Reply
+                  </button>
+                </div>
+                <p class="comment">
+                  lorem ipsum dolor sit amet consectetur adipisicing elit sed do
+                  eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                  enim ad minim veniam quis nostrud exercitation ullamco laboris
+                  nisi ut aliquip ex ea commodo consequat.
+                </p>
+              </div>
+            </div>
+            <div class="card-reply-container column hr-right">
+              {props.children}
             </div>
           </div>
         );
       }
-      function CardReplyContainer(props) {
-        return (
-          <div class="card-reply-container column hr-right">
-            {props.children}
-          </div>
-        );
-      }
+
       function CardReply(props) {
         return (
           <div class="card card-reply row">
@@ -126,15 +125,16 @@
         return (
           <div>
             <Card />
-            <CardReplyContainer>
+
+            <Card>
               <CardReply />
               <CardReply />
-            </CardReplyContainer>
-            <Card />
-            <CardReplyContainer>
+            </Card>
+
+            <Card>
               <CardReply />
               <CardReply />
-            </CardReplyContainer>
+            </Card>
             <CommentCard />
           </div>
         );
