@@ -251,7 +251,6 @@
           </div>
         );
       }
-
       function CommentCard(props) {
         return (
           <div class="card row vr-top space-between">
@@ -273,7 +272,15 @@
       }
 
       function App() {
-        return <h1>Hello</h1>;
+        return (
+          <>
+            <Card />
+            <CardReplyContainer>
+              <CardReply />
+            </CardReplyContainer>
+            <CommentCard />
+          </>
+        );
       }
 
       ReactDOM.render(<App />, document.getElementById("root"));
