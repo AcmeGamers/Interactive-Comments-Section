@@ -25,9 +25,9 @@
     />
   </head>
   <body>
-    <main id="root"></main>
-    <div class="column hr-center">
+    <main class="column hr-center">
       <!-- Comment Card Container -->
+      <div id="root"></div>
       <div>
         <!-- Normal Card -->
         <div class="card row">
@@ -59,6 +59,7 @@
             </p>
           </div>
         </div>
+
         <!-- Card Reply Container -->
         <div class="card-reply-container column hr-right">
           <!-- Card Reply -->
@@ -176,10 +177,106 @@
         ></textarea>
         <button class="btn btn-send">Send</button>
       </div>
-    </div>
+    </main>
 
     <script type="text/babel">
-      ReactDOM.render(<h1>Hello</h1>, document.getElementById("root"));
+      function Card(props) {
+        return (
+          <div class="card row">
+            <div class="column upvoting vr-center hr-center">
+              <a href="#">+</a>
+              <span>5</span>
+              <a href="#">-</a>
+            </div>
+            <div>
+              <div class="row space-between hr-center">
+                <div class="user-info row hr-center">
+                  <img
+                    class="user"
+                    src="./images/avatars/image-amyrobson.png"
+                    alt=""
+                  />
+                  <a class="username mg-lr-15px">amberson</a>
+                  <p class="period">1 month ago</p>
+                </div>
+                <button class="btn btn-reply">
+                  <img src="./images/icon-reply.svg" /> Reply
+                </button>
+              </div>
+              <p class="comment">
+                lorem ipsum dolor sit amet consectetur adipisicing elit sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat.
+              </p>
+            </div>
+          </div>
+        );
+      }
+      function CardReplyContainer(props) {
+        return (
+          <div class="card-reply-container column hr-right">
+            {props.children}
+          </div>
+        );
+      }
+      function CardReply(props) {
+        return (
+          <div class="card card-reply row">
+            <div class="column upvoting vr-center hr-center">
+              <a href="#">+</a>
+              <span>5</span>
+              <a href="#">-</a>
+            </div>
+            <div>
+              <div class="row space-between hr-center">
+                <div class="user-info row hr-center">
+                  <img
+                    class="user"
+                    src="./images/avatars/image-amyrobson.png"
+                    alt=""
+                  />
+                  <a class="username mg-lr-15px">amberson</a>
+                  <p class="period">1 month ago</p>
+                </div>
+                <button class="btn btn-reply">Reply</button>
+              </div>
+              <p class="comment">
+                lorem ipsum dolor sit amet consectetur adipisicing elit sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat.
+              </p>
+            </div>
+          </div>
+        );
+      }
+
+      function CommentCard(props) {
+        return (
+          <div class="card row vr-top space-between">
+            <img
+              class="user"
+              src="./images/avatars/image-amyrobson.png"
+              alt=""
+            />
+            <textarea
+              name="text "
+              placeholder="Add a comment..."
+              class="mg-lr-10px"
+              cols="30"
+              rows="10"
+            ></textarea>
+            <button class="btn btn-send">Send</button>
+          </div>
+        );
+      }
+
+      function App() {
+        return <h1>Hello</h1>;
+      }
+
+      ReactDOM.render(<App />, document.getElementById("root"));
     </script>
   </body>
 </html>
