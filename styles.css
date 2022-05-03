@@ -1,14 +1,15 @@
 :root {
-  --button-color: #5457b6;
-  --delete-button-color: #ed6468;
-  --light-grayish-blue: #c3c4ef;
-  --hover-delete-button: #ffb8bb;
+  --bg: #f5f6fa;
+  --white: #ffffff;
+
+  --primary: #5457b6;
+  --seconary: #ed6468;
+  --primary-light: #c3c4ef;
+  --secondary-light: #ffb8bb;
 
   --dark-blue: #324152;
   --grayish-blue: #67727e;
   --light-gray: #eaecf1;
-  --bg: #f5f6fa;
-  --white: #ffffff;
 
   --p-font: 16px;
   --font-family: "Rubik", sans-serif;
@@ -19,23 +20,39 @@ body {
   background-color: var(--bg);
 }
 
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
 .card {
   background: var(--white);
-  padding: 2rem;
-  margin: 7px;
+  padding: 1rem 1rem 5px;
+  margin: 5px;
+  border-radius: 5px;
+  width: 50vw;
 }
 
 .upvoting {
   background: var(--bg);
   padding: 10px;
-  border-radius: 15px;
+  border-radius: 10px;
+  height: -webkit-fill-available;
+  margin-right: 15px;
+}
+
+.user {
+  width: 30px;
+}
+.comment {
+  margin-top: 10px;
 }
 
 .btn {
   background: transparent;
   border: none;
   cursor: pointer;
-  color: blue;
+  color: var(--primary);
 }
 
 @media (max-width: 375px) {
@@ -53,10 +70,13 @@ body {
   display: flex;
   flex-direction: column;
 }
-.verti-center {
+.hr-center {
   align-items: center;
 }
-.horiz-center {
+.vr-top {
+  align-items: flex-start;
+}
+.vr-center {
   justify-content: center;
 }
 .full-width {
@@ -76,4 +96,7 @@ body {
 }
 .flex-nowrap {
   flex-wrap: nowrap;
+}
+.mg-lr-15px {
+  margin: 0 15px;
 }
