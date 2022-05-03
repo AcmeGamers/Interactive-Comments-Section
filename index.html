@@ -63,9 +63,11 @@
                 </p>
               </div>
             </div>
-            <div class="card-reply-container column hr-right">
-              {props.children}
-            </div>
+            {props.children && (
+              <div class="card-reply-container column hr-right">
+                {props.children}
+              </div>
+            )}
           </div>
         );
       }
