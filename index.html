@@ -79,43 +79,6 @@
           />
         );
       }
-      function CommentCard(props) {
-        let userComment = React.useRef("");
-        return (
-          <div className="card row vr-top space-between">
-            <img className="user" src={props.image} alt="" />
-            <textarea
-              name="text "
-              placeholder="Add a comment..."
-              className="mg-lr-10px"
-              cols="30"
-              rows="10"
-              useRef={userComment}
-            ></textarea>
-            <button
-              className="btn btn-send"
-              onClick={() => {
-                databaseData.comments.push({
-                  id: 1,
-                  content: this.userComment.current.focus(),
-                  createdAt: new Date().now(),
-                  score: 0,
-                  user: {
-                    image: {
-                      png: currentUser.image.png,
-                      webp: currentUser.image.webp,
-                    },
-                    username: currentUser.username,
-                  },
-                  replies: [],
-                });
-              }}
-            >
-              Send
-            </button>
-          </div>
-        );
-      }
       let currentUser = {
           image: {
             png: "./images/avatars/image-juliusomo.png",
@@ -188,6 +151,48 @@
             },
           ],
         };
+
+      class CommentCard extends React.Component {
+        constructor(props) {
+          super(props);
+          this.userComment = React.createRef();
+        }
+
+        render() {
+          <div className="card row vr-top space-between">
+            <img className="user" src={props.image} alt="" />
+            <textarea
+              name="text "
+              placeholder="Add a comment..."
+              className="mg-lr-10px"
+              cols="30"
+              rows="10"
+              useRef={this.userComment}
+            ></textarea>
+            <button
+              className="btn btn-send"
+              onClick={() => {
+                databaseData.comments.push({
+                  id: 1,
+                  content: this.userComment.current,
+                  createdAt: "12 secs",
+                  score: 0,
+                  user: {
+                    image: {
+                      png: currentUser.image.png,
+                      webp: currentUser.image.webp,
+                    },
+                    username: currentUser.username,
+                  },
+                  replies: [],
+                });
+              }}
+            >
+              Send
+            </button>
+          </div>;
+        }
+      }
 
       class App extends React.Component {
         constructor(props) {
