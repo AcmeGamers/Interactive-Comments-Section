@@ -9,8 +9,8 @@
 
   --primary-light-filter: invert(76%) sepia(24%) saturate(338%)
     hue-rotate(201deg) brightness(103%) contrast(87%);
-  --secondary-light-filter: invert(71%) sepia(21%) saturate(487%)
-    hue-rotate(309deg) brightness(103%) contrast(108%);
+  --secondary-light-filter: invert(77%) sepia(8%) saturate(1260%)
+    hue-rotate(309deg) brightness(101%) contrast(101%);
 
   --dark-blue: #324152;
   --grayish-blue: #67727e;
@@ -131,13 +131,13 @@ a {
   color: var(--secondary-light);
 }
 
-.btn-reply:hover img,
+/* .btn-reply:hover img,
 .btn-edit:hover img {
   filter: var(--primary-light-filter);
 }
 .btn-delete:hover img {
-  color: var(--secondary-light-filter);
-}
+  filter: var(--secondary-light-filter);
+} */
 
 .btn-send {
   background: var(--primary);

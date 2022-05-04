@@ -31,6 +31,11 @@
     </main>
 
     <script type="text/babel">
+      // TODO: Will add remove comment feature
+      // TODO: Edit Comment Feature
+      // TODO: Reply feature
+      // TODO: Upvote Feature
+
       // noComments() {
       //   return (
       //     <div className="no-comments">
@@ -62,9 +67,27 @@
                       )}
                     <p className="period">{props.createdAt}</p>
                   </div>
-                  <button className="btn btn-reply">
-                    <img src="./images/icon-reply.svg" /> Reply
-                  </button>
+
+                  {props.currentUser &&
+                  props.username == props.currentUser.username ? (
+                    <div>
+                      <button
+                        className="btn btn-delete"
+                        onClick={() => {
+                          props.deleteComment(props.id);
+                        }}
+                      >
+                        <img src="./images/icon-delete.svg" /> Delete
+                      </button>
+                      <button className="btn btn-edit">
+                        <img src="./images/icon-edit.svg" /> Edit
+                      </button>
+                    </div>
+                  ) : (
+                    <button className="btn btn-reply">
+                      <img src="./images/icon-reply.svg" /> Reply
+                    </button>
+                  )}
                 </div>
                 <p className="comment">{props.content}</p>
               </div>
@@ -81,12 +104,14 @@
         return (
           <Card
             key={props.id}
+            id={props.id}
             score={props.score}
             username={props.username}
             createdAt={props.createdAt}
             content={props.content}
             image={props.image}
             currentUser={props.currentUser}
+            deleteComment={props.deleteComment}
             class="card-reply"
           />
         );
@@ -128,7 +153,7 @@
                 disabled={!this.state.value}
                 onClick={() => {
                   this.props.commentHandler(this.userComment.current.value);
-                  this.userComment.current.value = "";
+                  this.setState({ value: "" });
                 }}
               >
                 Send
@@ -218,7 +243,7 @@
             comments: [
               ...this.state.comments,
               {
-                id: this.state.comments.length + 1,
+                id: "a" + (this.state.comments.length + 1),
                 score: 0,
                 createdAt: this.checkCommentDate(new Date().toLocaleString()),
                 content: comment,
@@ -232,6 +257,42 @@
                 replies: [],
               },
             ],
+          });
+        }
+        deleteComment(id) {
+          console.log(id);
+          this.setState({
+            comments: this.state.comments.filter((comment) => {
+              return comment.id !== id;
+            }),
+          });
+
+          // TODO: Will add remove comment feature
+        }
+
+        // Refactor Ways:
+        // 1. Make a yes no state
+        // 2. if comment ID is already yes, then remove it, else add it
+
+        upVote(id) {
+          this.setState({
+            comments: this.state.comments.map((comment) => {
+              if (comment.id === id) {
+                comment.score++;
+              }
+              return comment;
+            }),
+          });
+        }
+
+        downVote(id) {
+          this.setState({
+            comments: this.state.comments.map((comment) => {
+              if (comment.id === id) {
+                comment.score--;
+              }
+              return comment;
+            }),
           });
         }
 
@@ -256,24 +317,28 @@
                 this.state.comments.map((record) => (
                   <Card
                     key={record.id}
+                    id={record.id}
                     score={record.score}
                     username={record.user.username}
                     createdAt={record.createdAt}
                     content={record.content}
                     image={record.user.image.png}
                     currentUser={this.state.currentUser}
+                    deleteComment={this.deleteComment.bind(this)}
                   >
                     {record.replies == []
                       ? ""
                       : record.replies.map((reply) => (
                           <CardReply
                             key={reply.id}
+                            id={reply.id}
                             score={reply.score}
                             username={reply.user.username}
                             createdAt={reply.createdAt}
                             content={reply.content}
                             image={reply.user.image.png}
                             currentUser={this.state.currentUser}
+                            deleteComment={this.deleteComment.bind(this)}
                           />
                         ))}
                   </Card>
