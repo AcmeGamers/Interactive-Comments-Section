@@ -31,6 +31,14 @@
     </main>
 
     <script type="text/babel">
+      // noComments() {
+      //   return (
+      //     <div className="no-comments">
+      //       <p>No comments yet. Be the first to comment!</p>
+      //     </div>
+      //   );
+      // }
+
       function Card(props) {
         return (
           <div>
@@ -111,10 +119,13 @@
                 rows="10"
                 ref={this.userComment}
               ></textarea>
+
               <button
                 className="btn btn-send"
+                disabled={this.userComment.current == null && true}
                 onClick={() => {
                   this.props.commentHandler(this.userComment.current.value);
+                  this.userComment.current.value = "";
                 }}
               >
                 Send
@@ -179,16 +190,6 @@
             currentUser: false,
             comments: false,
           };
-        }
-
-        checkUser(username) {
-          try {
-            if (username == this.state.currentUser.username) {
-              return true;
-            }
-          } catch (e) {
-            return false;
-          }
         }
 
         checkCommentDate(date) {
