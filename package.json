@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0"
+  },
+  "name": "Interactive-Comments-Section",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node index.js"
+  },
+  "repository": "https://github.com/AcmeGamers/Interactive-Comments-Section.git",
+  "author": "Acme Gamers <acmegamers97@hotmail.com>",
+  "license": "MIT"
+}

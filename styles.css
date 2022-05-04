@@ -39,7 +39,7 @@ a {
   border-radius: 5px;
   width: 50vw;
 }
-.card-reply-container .card:last-child {
+.card-reply-container div:last-child .card {
   margin: 0 5px;
 }
 .card-reply-container {
