@@ -69,7 +69,13 @@
       function CardReply(props) {
         return (
           <div className="card card-reply row">
-            <Card />
+            <Card
+              key={props.id}
+              score={props.score}
+              username={props.username}
+              createdAt={props.createdAt}
+              content={props.content}
+            />
           </div>
         );
       }
@@ -167,7 +173,19 @@
                 username={record.username}
                 createdAt={record.createdAt}
                 content={record.content}
-              />
+              >
+                {record.replies == []
+                  ? ""
+                  : record.replies.map((reply) => (
+                      <CardReply
+                        key={reply.id}
+                        score={reply.score}
+                        username={reply.username}
+                        createdAt={reply.createdAt}
+                        content={reply.content}
+                      />
+                    ))}
+              </Card>
             ))}
             {/*
                 <Card />
