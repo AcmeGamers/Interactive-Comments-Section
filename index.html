@@ -159,38 +159,44 @@
         }
 
         render() {
-          <div className="card row vr-top space-between">
-            <img className="user" src={props.image} alt="" />
-            <textarea
-              name="text "
-              placeholder="Add a comment..."
-              className="mg-lr-10px"
-              cols="30"
-              rows="10"
-              useRef={this.userComment}
-            ></textarea>
-            <button
-              className="btn btn-send"
-              onClick={() => {
-                databaseData.comments.push({
-                  id: 1,
-                  content: this.userComment.current,
-                  createdAt: "12 secs",
-                  score: 0,
-                  user: {
-                    image: {
-                      png: currentUser.image.png,
-                      webp: currentUser.image.webp,
+          return (
+            <div className="card row vr-top space-between">
+              <img className="user" src={currentUser.image.png} alt="" />
+              <textarea
+                name="text"
+                type="text"
+                placeholder="Add a comment..."
+                className="mg-lr-10px"
+                cols="30"
+                rows="10"
+                ref={this.userComment}
+              ></textarea>
+              <button
+                className="btn btn-send"
+                onClick={() => {
+                  databaseData.comments.push({
+                    id: 1,
+                    content: this.userComment.current.value,
+                    createdAt: "12 secs",
+                    score: 0,
+                    user: {
+                      image: {
+                        png: currentUser.image.png,
+                        webp: currentUser.image.webp,
+                      },
+                      username: currentUser.username,
                     },
-                    username: currentUser.username,
-                  },
-                  replies: [],
-                });
-              }}
-            >
-              Send
-            </button>
-          </div>;
+                    replies: [],
+                  });
+                  console.log(
+                    databaseData.comments[databaseData.comments.length - 1]
+                  );
+                }}
+              >
+                Send
+              </button>
+            </div>
+          );
         }
       }
 
@@ -224,7 +230,7 @@
                       ))}
                 </Card>
               ))}
-              <CommentCard image={currentUser.image.png} />
+              <CommentCard />
             </div>
           );
         }
