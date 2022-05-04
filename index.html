@@ -97,7 +97,7 @@
               onClick={() => {
                 databaseData.comments.push({
                   id: 1,
-                  content: userComment.current.focus(),
+                  content: this.userComment.current.focus(),
                   createdAt: new Date().now(),
                   score: 0,
                   user: {
@@ -116,7 +116,6 @@
           </div>
         );
       }
-
       let currentUser = {
           image: {
             png: "./images/avatars/image-juliusomo.png",
@@ -190,33 +189,40 @@
           ],
         };
 
-      function App() {
-        return (
-          <div>
-            {databaseData.comments.map((record) => (
-              <Card
-                key={record.id}
-                score={record.score}
-                username={record.username}
-                createdAt={record.createdAt}
-                content={record.content}
-              >
-                {record.replies == []
-                  ? ""
-                  : record.replies.map((reply) => (
-                      <CardReply
-                        key={reply.id}
-                        score={reply.score}
-                        username={reply.username}
-                        createdAt={reply.createdAt}
-                        content={reply.content}
-                      />
-                    ))}
-              </Card>
-            ))}
-            <CommentCard image={currentUser.image.png} />
-          </div>
-        );
+      class App extends React.Component {
+        constructor(props) {
+          super(props);
+          this.input = React.createRef();
+        }
+
+        render() {
+          return (
+            <div>
+              {databaseData.comments.map((record) => (
+                <Card
+                  key={record.id}
+                  score={record.score}
+                  username={record.username}
+                  createdAt={record.createdAt}
+                  content={record.content}
+                >
+                  {record.replies == []
+                    ? ""
+                    : record.replies.map((reply) => (
+                        <CardReply
+                          key={reply.id}
+                          score={reply.score}
+                          username={reply.username}
+                          createdAt={reply.createdAt}
+                          content={reply.content}
+                        />
+                      ))}
+                </Card>
+              ))}
+              <CommentCard image={currentUser.image.png} />
+            </div>
+          );
+        }
       }
 
       ReactDOM.render(<App />, document.getElementById("root"));

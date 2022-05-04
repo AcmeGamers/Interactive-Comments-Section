@@ -50,12 +50,13 @@ function CardReply(props) {
   );
 }
 function CommentCard(props) {
-  let userComment = React.useRef("");
+  let userComment = useRef("");
   return (
     <div className="card row vr-top space-between">
       <img className="user" src={props.image} alt="" />
       <textarea
-        name="text "
+        name="text"
+        type="text"
         placeholder="Add a comment..."
         className="mg-lr-10px"
         cols="30"
@@ -67,8 +68,8 @@ function CommentCard(props) {
         onClick={() => {
           databaseData.comments.push({
             id: 1,
-            content: userComment.current.focus(),
-            createdAt: new Date().now(),
+            content: userComment.current,
+            createdAt: "12 secs",
             score: 0,
             user: {
               image: {
@@ -79,6 +80,7 @@ function CommentCard(props) {
             },
             replies: [],
           });
+          console.log(databaseData.comments[databaseData.comments.length - 1]);
         }}
       >
         Send
