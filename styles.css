@@ -85,6 +85,12 @@ a {
   color: var(--dark-blue);
   cursor: pointer;
 }
+.tag {
+  background: var(--primary);
+  color: white;
+  padding: 1px 5px;
+  font-size: 14px;
+}
 .period {
   font-weight: 400;
   color: var(--grayish-blue);
@@ -216,6 +222,17 @@ textarea:focus {
 }
 .mg-lr-15px {
   margin: 0 15px;
+}
+.mg-r-10px {
+  margin-right: 10px;
+}
+
+.mg-r-15px {
+  margin-right: 15px;
+}
+.mg-l-15px-r-10px {
+  margin-left: 15px;
+  margin-right: 10px;
 }
 .hidden {
   display: none;
