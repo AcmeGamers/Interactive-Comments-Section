@@ -79,7 +79,12 @@
                       >
                         <img src="./images/icon-delete.svg" /> Delete
                       </button>
-                      <button className="btn btn-edit">
+                      <button
+                        className="btn btn-edit"
+                        onClick={() => {
+                          props.editComment(props.id);
+                        }}
+                      >
                         <img src="./images/icon-edit.svg" /> Edit
                       </button>
                     </div>
@@ -89,7 +94,21 @@
                     </button>
                   )}
                 </div>
-                <p className="comment">{props.content}</p>
+                {props.currentUser &&
+                props.username == props.currentUser.username ? (
+                  <textarea
+                    name="text"
+                    placeholder="Add a comment..."
+                    value={props.content}
+                    className=""
+                    cols="30"
+                    rows="10"
+                    readOnly
+                  ></textarea>
+                ) : (
+                  // have to add a button above
+                  <p className="comment">{props.content}</p>
+                )}
               </div>
             </div>
             {props.children && (
@@ -268,6 +287,22 @@
           });
 
           // TODO: Will add remove comment feature
+        }
+
+        editComment(id) {
+          console.log(id);
+          this.setState({
+            comments: this.state.comments.map((comment) => {
+              if (comment.id === id) {
+                return {
+                  ...comment,
+                  content: "",
+                };
+              } else {
+                return comment;
+              }
+            }),
+          });
         }
 
         // Refactor Ways:
