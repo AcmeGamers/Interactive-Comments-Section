@@ -99,6 +99,7 @@
           this.state = {
             comments: props.comments,
             currentUser: props.currentUser,
+            value: "",
           };
         }
 
@@ -118,11 +119,13 @@
                 cols="30"
                 rows="10"
                 ref={this.userComment}
+                onChange={(e) => this.setState({ value: e.target.value })}
+                value={this.state.value}
               ></textarea>
 
               <button
                 className="btn btn-send"
-                disabled={this.userComment.current == null && true}
+                disabled={!this.state.value}
                 onClick={() => {
                   this.props.commentHandler(this.userComment.current.value);
                   this.userComment.current.value = "";
