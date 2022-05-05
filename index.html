@@ -49,6 +49,7 @@
           super(props);
           this.state = {
             editMode: 0,
+            upvote: 0,
           };
         }
 
@@ -61,7 +62,9 @@
                     +
                   </button>
                   <span>{this.props.score}</span>
-                  <button className="vote downvote">-</button>
+                  <button className="vote downvote" onClick>
+                    -
+                  </button>
                 </div>
 
                 <div className="full-width">
