@@ -54,7 +54,6 @@ a {
 
 .upvoting {
   background: var(--bg);
-  padding: 10px;
   border-radius: 10px;
   height: -webkit-fill-available;
   margin-right: 25px;
@@ -63,16 +62,28 @@ a {
   margin: 10px 0;
   color: var(--primary);
 }
-.upvoting a {
+.vote {
+  outline: none;
+  border: none;
+  background: transparent;
   color: var(--primary-light);
+  padding: 0;
+  cursor: pointer;
+  padding: 0 10px;
+}
+.upvote {
+  padding-top: 10px;
+}
+.downvote {
+  padding-bottom: 10px;
 }
 .upvoting span,
-.upvoting a {
+.vote {
   font-size: 16px;
   font-weight: 500;
   transition: 0.5s ease all;
 }
-.upvoting a:hover {
+.vote:hover {
   color: var(--primary);
 }
 

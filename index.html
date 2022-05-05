@@ -48,7 +48,7 @@
         constructor(props) {
           super(props);
           this.state = {
-            editMode: false,
+            editMode: 0,
           };
         }
 
@@ -57,9 +57,11 @@
             <div>
               <div className={"card row " + this.props.class}>
                 <div className="column upvoting vr-center hr-center">
-                  <a href="#">+</a>
+                  <button className="vote upvote" onClick>
+                    +
+                  </button>
                   <span>{this.props.score}</span>
-                  <a href="#">-</a>
+                  <button className="vote downvote">-</button>
                 </div>
 
                 <div className="full-width">
@@ -92,7 +94,7 @@
                           className="btn btn-edit"
                           onClick={() => {
                             this.setState({
-                              editMode: this.state.editMode ? false : true,
+                              editMode: this.state.editMode ? 0 : 1,
                             });
                           }}
                         >
@@ -111,7 +113,6 @@
                       <textarea
                         name="text"
                         placeholder="Add a comment..."
-                        value={this.props.content}
                         className={this.state.editMode || "hidden"}
                         cols="30"
                         rows="10"
