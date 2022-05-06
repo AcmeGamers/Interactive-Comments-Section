@@ -58,11 +58,29 @@
             <div>
               <div className={"card row " + this.props.class}>
                 <div className="column upvoting vr-center hr-center">
-                  <button className="vote upvote" onClick>
+                  <button
+                    className="vote upvote"
+                    onClick={() => {
+                      this.state.vote == 1
+                        ? this.setState({ vote: 0 })
+                        : (this.state.vote == -1 || this.state.vote == 0) &&
+                          this.setState({ vote: 1 });
+                      this.props.vote(this.props.id, this.state.vote);
+                    }}
+                  >
                     +
                   </button>
                   <span>{this.props.score}</span>
-                  <button className="vote downvote" onClick>
+                  <button
+                    className="vote downvote"
+                    onClick={() => {
+                      this.state.vote == -1
+                        ? this.setState({ vote: 0 })
+                        : (this.state.vote == 1 || this.state.vote == 0) &&
+                          this.setState({ vote: -1 });
+                      this.props.vote(this.props.id, this.state.vote);
+                    }}
+                  >
                     -
                   </button>
                 </div>
@@ -153,6 +171,7 @@
             image={props.image}
             currentUser={props.currentUser}
             deleteComment={props.deleteComment}
+            vote={props.vote}
             class="card-reply"
           />
         );
@@ -308,7 +327,7 @@
             }),
           });
 
-          // TODO: Will add remove comment feature
+          // TODO: Will add remove reply feature
         }
 
         editComment(id) {
@@ -327,28 +346,17 @@
           });
         }
 
-        // Refactor Ways:
-        // 1. Make a yes no state
-        // 2. if comment ID is already yes, then remove it, else add it
-
-        upVote(id) {
+        vote(id, vote) {
           this.setState({
             comments: this.state.comments.map((comment) => {
               if (comment.id === id) {
-                comment.score++;
+                return {
+                  ...comment,
+                  score: comment.score + vote,
+                };
+              } else {
+                return comment;
               }
-              return comment;
-            }),
-          });
-        }
-
-        downVote(id) {
-          this.setState({
-            comments: this.state.comments.map((comment) => {
-              if (comment.id === id) {
-                comment.score--;
-              }
-              return comment;
             }),
           });
         }
@@ -381,6 +389,7 @@
                     content={record.content}
                     image={record.user.image.png}
                     currentUser={this.state.currentUser}
+                    vote={this.vote.bind(this)}
                     deleteComment={this.deleteComment.bind(this)}
                   >
                     {record.replies == []
@@ -395,6 +404,7 @@
                             content={reply.content}
                             image={reply.user.image.png}
                             currentUser={this.state.currentUser}
+                            vote={this.vote.bind(this)}
                             deleteComment={this.deleteComment.bind(this)}
                           />
                         ))}
