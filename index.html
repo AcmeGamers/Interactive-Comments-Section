@@ -49,7 +49,9 @@
           super(props);
           this.state = {
             editMode: 0,
-            vote: 0,
+            voteScore: 0,
+            upVote: false,
+            downVote: false,
           };
         }
 
@@ -61,11 +63,12 @@
                   <button
                     className="vote upvote"
                     onClick={() => {
-                      this.state.vote == 1
-                        ? this.setState({ vote: 0 })
-                        : (this.state.vote == -1 || this.state.vote == 0) &&
-                          this.setState({ vote: 1 });
-                      this.props.vote(this.props.id, this.state.vote);
+                      this.setState({ upVote: true, downVote: false });
+                      if (this.state.upVote == true)
+                        this.setState({ upVote: false, voteScore: -1 });
+                      else this.setState({ upVote: true, voteScore: 1 });
+
+                      this.props.vote(this.props.id, this.state.voteScore);
                     }}
                   >
                     +
@@ -74,11 +77,12 @@
                   <button
                     className="vote downvote"
                     onClick={() => {
-                      this.state.vote == -1
-                        ? this.setState({ vote: 0 })
-                        : (this.state.vote == 1 || this.state.vote == 0) &&
-                          this.setState({ vote: -1 });
-                      this.props.vote(this.props.id, this.state.vote);
+                      this.setState({ downVote: true, upVote: false });
+                      if (this.state.downVote == true)
+                        this.setState({ downVote: false, voteScore: 1 });
+                      else this.setState({ downVote: true, voteScore: -1 });
+
+                      this.props.vote(this.props.id, this.state.voteScore);
                     }}
                   >
                     -
@@ -170,8 +174,8 @@
             content={props.content}
             image={props.image}
             currentUser={props.currentUser}
-            deleteComment={props.deleteComment}
             vote={props.vote}
+            deleteComment={props.deleteComment}
             class="card-reply"
           />
         );
@@ -221,53 +225,6 @@
             </div>
           );
         }
-      }
-
-      function CardEditReply() {
-        return (
-          <div className="card row">
-            <div className="column upvoting vr-center hr-center">
-              <a href="#">+</a>
-              <span>5</span>
-              <a href="#">-</a>
-            </div>
-            <div className="full-width">
-              <div className="row space-between hr-center">
-                <div className="user-info row hr-center">
-                  <img
-                    className="user"
-                    src="./images/avatars/image-amyrobson.png"
-                    alt=""
-                  />
-                  <a className="username mg-l-15px-r-10px">amberson</a>
-                  <p className="tag mg-r-10px">you</p>
-                  <p className="period">1 month ago</p>
-                </div>
-                <div>
-                  <button className="btn btn-delete">
-                    <img src="./images/icon-delete.svg" /> Delete
-                  </button>
-                  <button className="btn btn-edit">
-                    <img src="./images/icon-edit.svg" /> Edit
-                  </button>
-                </div>
-              </div>
-              <p className="comment hidden">
-                lorem ipsum dolor sit amet consectetur adipisicing elit sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat.
-              </p>
-              <textarea
-                name="text"
-                placeholder="Add a comment..."
-                className=""
-                cols="30"
-                rows="10"
-              ></textarea>
-            </div>
-          </div>
-        );
       }
 
       class App extends React.Component {
@@ -377,7 +334,6 @@
         render() {
           return (
             <div>
-              <CardEditReply />
               {this.state.comments &&
                 this.state.comments.map((record) => (
                   <Card
